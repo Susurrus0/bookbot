@@ -4,9 +4,10 @@ def main():
         book_contents = f.read()
         print(book_contents)
     words = book_contents.split()
-    print(f"--- Begin report of {book} ---")
+    print(f"--- Begin report of {book} ---\n")
     print(count_words(words))
     print(count_chars(words))
+    print("--- End report ---")
 
 
 def count_words(words):
