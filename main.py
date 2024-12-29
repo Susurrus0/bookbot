@@ -4,13 +4,14 @@ def main():
         book_contents = f.read()
         print(book_contents)
     words = book_contents.split()
-    # print(words)
+    print(f"--- Begin report of {book} ---")
     print(count_words(words))
     print(count_chars(words))
 
 
 def count_words(words):
-    return len(words)
+    word_count = len(words)
+    return f"{word_count} words found in the document."
 
 
 def count_chars(words):
@@ -45,8 +46,12 @@ def count_chars(words):
     for word in words:
         for letter in word:
             # print(letter)
-            if letter in chars_dict:
+            if letter.lower() in chars_dict:
                 chars_dict[letter.lower()] += 1
-    return chars_dict
+    sorted_chars = sorted(chars_dict.items(), key=lambda item: item[1], reverse=True)
+    return_string = ""
+    for char in sorted_chars:
+        return_string += (f"The {char[0]} character was found {char[1]} times.\n")
+    return return_string
 
 main()
